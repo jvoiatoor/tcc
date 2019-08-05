@@ -16,6 +16,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.Criarconta;
 import modelo.Oficinas;
 
 /**
@@ -73,10 +75,26 @@ public class OficinasWS extends HttpServlet {
                 //pra onde deve ser redirecionada a página
                 pagina = "index.jsp";
                 //passar a listagem para a página
+                
+                 HttpSession session = ((HttpServletRequest) request).getSession();
+                 Criarconta admin = (Criarconta) session.getAttribute("usuario");
+                 
+                 if(admin != null && admin.getGaragem()){
+                 
+                pagina = "index.jsp";
+                
+                 }
+                 
+                 else{
+                     pagina="listar.jsp";
+                 }
+                //passar a listagem para a página
                 request.setAttribute("lista", lista);
                 break;
                 
         }
+             
+        
         RequestDispatcher destino = request.getRequestDispatcher(pagina);
         destino.forward(request, response);
         

@@ -3,7 +3,7 @@
 
 <div class="card ">
     <div class="card-header">
-        <h4 class="card-title">Serviços</h4>
+        <h4 class="card-title">Oficinas</h4>
     </div>
     <div class="card-body">
                  
